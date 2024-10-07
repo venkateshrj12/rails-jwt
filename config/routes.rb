@@ -7,4 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post '/auth/login', to: 'authentication#login'
+  resources :users, param: :_username
+
+  # this route should be at the end to give the error for invalid route
+  get '/*a', to: 'application#not_found'
 end
